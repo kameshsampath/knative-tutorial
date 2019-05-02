@@ -3,11 +3,13 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-pr:
+trigger:
   branches:
     include:
-    - release/*
-    - workshop/*
+     - release/*
+     - workshop/*
+    exclude:
+     - master
 
 pool:
   vmImage: 'Ubuntu-16.04'
