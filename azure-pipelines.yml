@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+pr:
+  branches:
+    include:
+    - release/*
+    - workshop/*
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+
+- script: |
+    yarn global add @antora/cli@2.0
+    yarn global add @antora/site-generator-default@2.0
+  displayName: 'Install Antora'
+
+- script: |
+    antora --pull --stacktrace site.yml
+  displayName: 'Build Docs'
