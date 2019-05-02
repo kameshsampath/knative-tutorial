@@ -18,8 +18,8 @@ steps:
     versionSpec: '10.x'
 
 - script: |
-    yarn global add @antora/cli@2.0
-    yarn global add @antora/site-generator-default@2.0
+    npm i -g @antora/cli@2.0 &&\
+    npm i @antora/site-generator-default@2.0
   displayName: 'Install Antora'
 
 - script: |
